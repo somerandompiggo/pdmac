@@ -30,7 +30,7 @@ def loadsample():
                 thebyte.append(True)
             print(current)
             if len(thebyte) == 8:
-                output.append([int(b) for b in thebyte])
+                output.append(bytearray([int(b) for b in thebyte]))
         print(output)
                 
             # print(int.from_bytes(chunk, "big"))
