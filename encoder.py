@@ -16,7 +16,13 @@ with open('blank.raw', 'rb') as f:
         while (chunk := f.read(1)) != b'':
             input.append(int.from_bytes(chunk, "big"))
 
-for i in range(len(input))
+for i in input:
+    target = input[i]
+    # output.append(getdeltabit(current, target))
+    if current >= target:
+        current -= 1
+    elif current <= target:
+        current += 1
 
 # code graveyard
 
