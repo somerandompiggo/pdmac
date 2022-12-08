@@ -3,8 +3,6 @@ import math
 
 current = 0
 target = 0
-input = []
-output = []
 
 def getdeltabit(current, target):
     if current >= target:
@@ -12,25 +10,25 @@ def getdeltabit(current, target):
     if current <= target:
         return True
 
-with open('blank.raw', 'rb') as f:
-        while (chunk := f.read(1)) != b'':
-            input.append(int.from_bytes(chunk, "big"))
+# with open('blank.raw', 'rb') as f:
+#         while (chunk := f.read(1)) != b'':
+#             input.append(int.from_bytes(chunk, "big"))
 
 outputfile = open('output.raw', "wb")
 
-for i in input:
-    target = input[i]
-    byteout = []
-    # output.append(getdeltabit(current, target))
-    for i in range(8):
-        if current >= target:
-            current -= 1
-            byteout.append(False)
-        elif current <= target:
-            current += 1
-            byteout.append(True)
-    outputfile.write(int.to_bytes(int(''.join(['1' if i else '0' for i in byteout]), 2), 1, "big"))
-outputfile.close()
+# for i in input:
+#     target = input[i]
+#     byteout = []
+#     # output.append(getdeltabit(current, target))
+#     for i in range(8):
+#         if current >= target:
+#             current -= 1
+#             byteout.append(False)
+#         elif current <= target:
+#             current += 1
+#             byteout.append(True)
+#     outputfile.write(int.to_bytes(int(''.join(['1' if i else '0' for i in byteout]), 2), 1, "big"))
+# outputfile.close()
     
 
 # code graveyard
@@ -38,26 +36,21 @@ outputfile.close()
 # def makebyte(thebyte):
 #     pass
 
-
-# def loadsample():
-#     global current
-#     global target
-#     global output
-#     buffer_size = 1
-#     with open('blank.raw', 'rb') as f:
-#         thebyte = []
-#         while (chunk := f.read(buffer_size)) != b'':
-#             target = int.from_bytes(chunk, "big")
-#             if current >= target:
-#                 thebyte.append(False)
-#             elif current <= target:
-#                 thebyte.append(True)
-#             print(current)
-#             if len(thebyte) == 8:
-#                 output.append()
-                
-#             print(int.from_bytes(chunk, "big"))
-
+buffer_size = 1
+with open('blank.raw', 'rb') as f:
+    while (chunk := f.read(buffer_size)) != b'':
+        target = int.from_bytes(chunk, "big")
+        byteout = []
+        # output.append(getdeltabit(current, target))
+        for i in range(8):
+            if current >= target:
+                current -= 1
+                byteout.append(False)
+            elif current <= target:
+                current += 1
+                byteout.append(True)
+        outputfile.write(int.to_bytes(int(''.join(['1' if i else '0' for i in byteout]), 2), 1, "big"))
+    outputfile.close()
 
 # loadsample()
 
